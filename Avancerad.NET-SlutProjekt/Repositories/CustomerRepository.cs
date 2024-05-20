@@ -23,7 +23,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
             _userRepository = userRepository;
             _mapper = mapper;
         }
-        // Sort all the customers
+        
         public async Task<IEnumerable<CustomerDto>> GetCustomers(string name, string email, string sortField, bool ascending)
         {
             var query = _context.Customers.AsQueryable();
@@ -53,13 +53,13 @@ namespace Avancerad.NET_SlutProjekt.Repositories
             return _mapper.Map<List<CustomerDto>>(customers);
         }
 
-        // Get all the customers in the database FUNKAR FINT 
+        
         public async Task<IEnumerable<CustomerDto>> GetAllCustomers()
         {
             var customers = await _context.Customers.ToListAsync();
             return _mapper.Map<IEnumerable<CustomerDto>>(customers);
         }
-        // Find customer using id
+        
         public async Task<CustomerDto> GetCustomerById(int customerId)
         {
             var customer = await _context.Customers
@@ -77,7 +77,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
         }
 
 
-        // Get a total of hours that one customer has made in bookings the chosen week FUNKAR FINT
+        
         public async Task<double> GetTotalBookingHoursForWeek(int customerId, int year, int weekNumber)
         {
             var firstDayOfWeek = ISOWeek.ToDateTime(year, weekNumber, DayOfWeek.Monday);
@@ -95,7 +95,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
             return totalHours;
         }
 
-        // Create a new customer and user thats getting linked together in the process. FUNKAR FINT 
+        
         public async Task<CreateCustomerResponse> AddCustomer(CreateCustomer customer)
         {
             var user = new User()
@@ -128,14 +128,14 @@ namespace Avancerad.NET_SlutProjekt.Repositories
 
             return customerResponse;
         }
-        // FUNKAR FINT 
+       
         public async Task UpdateCustomer(CustomerDto updatedCustomer)
         {
             var customer = _context.Customers.FirstOrDefault(c => c.CustomerId == updatedCustomer.CustomerId);
             if (customer != null)
             {
                 _mapper.Map(updatedCustomer, customer);
-                customer.UpdateDate = DateTime.UtcNow;  // Uppdatera uppdateringsdatum
+                customer.UpdateDate = DateTime.UtcNow;  
 
                 _context.Customers.Update(customer);
                 await _context.SaveChangesAsync();
@@ -145,7 +145,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
                 throw new KeyNotFoundException("Customer to update was not found");
             }
         }
-        // FUNKAR FINT
+        
         public async Task DeleteCustomer(int customerId)
         {
             var customerToDelete = _context.Customers
@@ -164,12 +164,12 @@ namespace Avancerad.NET_SlutProjekt.Repositories
                     _context.Appointments.RemoveRange(customerToDelete.Appointments);
                     _context.Customers.Remove(customerToDelete);
                     await _context.SaveChangesAsync();
-                    await transaction.CommitAsync();  // Commita transaktionen om allt går bra
+                    await transaction.CommitAsync(); 
                 }
                 catch
                 {
-                    await transaction.RollbackAsync();  // Rulla tillbaka om något går fel
-                    throw;  // Kasta undantaget vidare så att det kan hanteras uppåt i anropshierarkin
+                    await transaction.RollbackAsync();  
+                    throw; 
                 }
             }
         }
@@ -197,7 +197,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
                 return null;
             }
             var appointment = _mapper.Map<Appointment>(appointmentDto);
-            appointment.CreationDate = DateTime.UtcNow;  // Set creation and update date explicitly
+            appointment.CreationDate = DateTime.UtcNow;  
             appointment.UpdateDate = DateTime.UtcNow;
             appointment.Company = company;
             appointment.Customer = customer;

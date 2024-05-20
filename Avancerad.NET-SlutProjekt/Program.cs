@@ -28,19 +28,12 @@ namespace Avancerad.NET_SlutProjekt
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Läs in konfigurationsfilen
-            var config = new ConfigurationBuilder()
-                .SetBasePath(builder.Environment.ContentRootPath)
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            // Lägg till JWT-nyckeln i konfigurationen
-            builder.Configuration["Jwt:NewSigningKey"] = config["Jwt:NewSigningKey"];
-
             // Add services to the container.
+
             builder.Services.AddControllers();
             builder.Services.AddControllers().AddJsonOptions(x =>
                                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
 
             //
@@ -56,21 +49,20 @@ namespace Avancerad.NET_SlutProjekt
                     Scheme = "Bearer"
                 });
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
-        {
-            {
-                new OpenApiSecurityScheme
                 {
-                    Reference = new OpenApiReference
                     {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
                     }
-                },
-                Array.Empty<string>()
-            }
         });
             });
-            //
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -82,19 +74,19 @@ namespace Avancerad.NET_SlutProjekt
             builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             builder.Services.AddSwaggerGen();
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-                        ValidAudience = builder.Configuration["Jwt:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:NewSigningKey"]))
-                    };
-                });
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                };
+            });
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("CustomerPolicy", policy => policy.RequireRole("Customer"));
@@ -124,4 +116,3 @@ namespace Avancerad.NET_SlutProjekt
         }
     }
 }
-

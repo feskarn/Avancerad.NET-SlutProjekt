@@ -72,24 +72,24 @@ namespace Avancerad.NET_SlutProjekt.Migrations
                             AppointId = 1,
                             AppointmentDurationMinutes = 60,
                             CompanyId = 1,
-                            CreationDate = new DateTime(2024, 5, 19, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6434),
+                            CreationDate = new DateTime(2024, 5, 19, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7737),
                             CustomerId = 1,
-                            Description = "Meeting to discuss project requirements.",
-                            StartingTime = new DateTime(2024, 5, 25, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6433),
-                            Title = "Consultation Meeting",
-                            UpdateDate = new DateTime(2024, 5, 20, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6435)
+                            Description = "Undersökning för att hitta eventuella skador/sjukdomar",
+                            StartingTime = new DateTime(2024, 5, 25, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7736),
+                            Title = "Undersökning",
+                            UpdateDate = new DateTime(2024, 5, 20, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7737)
                         },
                         new
                         {
                             AppointId = 2,
                             AppointmentDurationMinutes = 30,
                             CompanyId = 2,
-                            CreationDate = new DateTime(2024, 5, 18, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6437),
+                            CreationDate = new DateTime(2024, 5, 18, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7741),
                             CustomerId = 2,
-                            Description = "Review of the initial design drafts.",
-                            StartingTime = new DateTime(2024, 5, 27, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6437),
-                            Title = "Design Review",
-                            UpdateDate = new DateTime(2024, 5, 20, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6438)
+                            Description = "Träningspass med våran PT",
+                            StartingTime = new DateTime(2024, 5, 27, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7741),
+                            Title = "PT-Pass",
+                            UpdateDate = new DateTime(2024, 5, 20, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7742)
                         });
                 });
 
@@ -129,22 +129,22 @@ namespace Avancerad.NET_SlutProjekt.Migrations
                         new
                         {
                             Id = 1,
-                            Action = "Created",
+                            Action = "Skapad",
                             AppointId = 1,
-                            ChangedAtDate = new DateTime(2024, 5, 20, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6451),
+                            ChangedAtDate = new DateTime(2024, 5, 20, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7760),
                             CompanyId = 1,
                             CustomerId = 1,
-                            Details = "Appointment created for John Wall"
+                            Details = "Möte skapad för Anna Andersson"
                         },
                         new
                         {
                             Id = 2,
-                            Action = "Created",
+                            Action = "Skapad",
                             AppointId = 2,
-                            ChangedAtDate = new DateTime(2024, 5, 20, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6454),
+                            ChangedAtDate = new DateTime(2024, 5, 20, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7762),
                             CompanyId = 2,
                             CustomerId = 2,
-                            Details = "Appointment created for Mary Jane"
+                            Details = "Möte skapad för Karl Karlsson"
                         });
                 });
 
@@ -179,15 +179,15 @@ namespace Avancerad.NET_SlutProjekt.Migrations
                         new
                         {
                             CompanyId = 1,
-                            CompanyEmail = "info@techsolutions.com",
-                            CompanyName = "Tech Solutions Inc.",
+                            CompanyEmail = "fbg@sjukvård.se",
+                            CompanyName = "FBG SJUKVÅRD",
                             UserId = 1
                         },
                         new
                         {
                             CompanyId = 2,
-                            CompanyEmail = "contact@innovativedesigns.com",
-                            CompanyName = "Innovative Designs LLC",
+                            CompanyEmail = "contact@friskissvettis.se",
+                            CompanyName = "Friskis & Svettis",
                             UserId = 1
                         });
                 });
@@ -237,23 +237,23 @@ namespace Avancerad.NET_SlutProjekt.Migrations
                         new
                         {
                             CustomerId = 1,
-                            CreationDate = new DateTime(2024, 5, 10, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6391),
-                            Email = "john.wall@hotmail.com",
-                            FirstName = "John",
-                            LastName = "Wall",
-                            Phone = "+4634567890",
-                            UpdateDate = new DateTime(2024, 5, 20, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6397),
+                            CreationDate = new DateTime(2024, 5, 10, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7675),
+                            Email = "AnnaAndersson@hotmail.com",
+                            FirstName = "Anna",
+                            LastName = "Andersson",
+                            Phone = "0788995544",
+                            UpdateDate = new DateTime(2024, 5, 20, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7688),
                             UserId = 2
                         },
                         new
                         {
                             CustomerId = 2,
-                            CreationDate = new DateTime(2024, 5, 12, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6399),
-                            Email = "mary.jane@hotmail.com",
-                            FirstName = "Mary",
-                            LastName = "Jane",
+                            CreationDate = new DateTime(2024, 5, 12, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7690),
+                            Email = "KarlKarlsson@hotmail.com",
+                            FirstName = "Karl",
+                            LastName = "Karlsson",
                             Phone = "+4698765432",
-                            UpdateDate = new DateTime(2024, 5, 20, 12, 12, 26, 23, DateTimeKind.Utc).AddTicks(6399),
+                            UpdateDate = new DateTime(2024, 5, 20, 16, 53, 8, 340, DateTimeKind.Utc).AddTicks(7690),
                             UserId = 3
                         });
                 });
@@ -290,25 +290,25 @@ namespace Avancerad.NET_SlutProjekt.Migrations
                         {
                             Id = 1,
                             IsActive = true,
-                            PasswordHash = "password123",
+                            PasswordHash = "password",
                             Role = "Admin",
-                            Username = "admin"
+                            Username = "elf"
                         },
                         new
                         {
                             Id = 2,
                             IsActive = true,
-                            PasswordHash = "hejhej456",
+                            PasswordHash = "password",
                             Role = "User",
-                            Username = "user1"
+                            Username = "peter"
                         },
                         new
                         {
                             Id = 3,
                             IsActive = true,
-                            PasswordHash = "user2",
-                            Role = "User",
-                            Username = "user2"
+                            PasswordHash = "password",
+                            Role = "Customer",
+                            Username = "isac"
                         });
                 });
 

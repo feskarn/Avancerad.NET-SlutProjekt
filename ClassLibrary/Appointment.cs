@@ -21,10 +21,6 @@ namespace ClassLibrary
         public int CompanyId { get; set; } 
         public int CustomerId { get; set; } 
 
-
-
-        // RELATIONS
-
         public Company Company { get; set; }
 
         public Customer Customer { get; set; }

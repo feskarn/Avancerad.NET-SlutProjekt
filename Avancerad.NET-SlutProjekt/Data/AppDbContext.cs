@@ -22,20 +22,20 @@ namespace Avancerad.NET_SlutProjekt.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>().HasData(
-            new User { Id = 1, Username = "admin", PasswordHash = "password", Role = "Admin", IsActive = true },
-            new User { Id = 2, Username = "user1", PasswordHash = "hejhej", Role = "User", IsActive = true },
-            new User { Id = 3, Username = "user2", PasswordHash = "user2", Role = "User", IsActive = true }
-            );
+                   new User { Id = 1, Username = "elf", PasswordHash = "password", Role = "Admin", IsActive = true },
+                   new User { Id = 2, Username = "peter", PasswordHash = "password", Role = "User", IsActive = true },
+                   new User { Id = 3, Username = "isac", PasswordHash = "password", Role = "Customer", IsActive = true }
+               );
 
 
             modelBuilder.Entity<Customer>().HasData(
                 new Customer
                 {
                     CustomerId = 1,
-                    Email = "john.wall@hotmail.com",
-                    Phone = "+4634567890",
-                    FirstName = "John",
-                    LastName = "Wall",
+                    Email = "AnnaAndersson@hotmail.com",
+                    Phone = "0788995544",
+                    FirstName = "Anna",
+                    LastName = "Andersson",
                     CreationDate = DateTime.UtcNow.AddDays(-10),
                     UpdateDate = DateTime.UtcNow,
                     UserId = 2
@@ -43,10 +43,10 @@ namespace Avancerad.NET_SlutProjekt.Data
                 new Customer
                 {
                     CustomerId = 2,
-                    Email = "mary.jane@hotmail.com",
+                    Email = "KarlKarlsson@hotmail.com",
                     Phone = "+4698765432",
-                    FirstName = "Mary",
-                    LastName = "Jane",
+                    FirstName = "Karl",
+                    LastName = "Karlsson",
                     CreationDate = DateTime.UtcNow.AddDays(-8),
                     UpdateDate = DateTime.UtcNow,
                     UserId = 3
@@ -57,15 +57,15 @@ namespace Avancerad.NET_SlutProjekt.Data
                 new Company
                 {
                     CompanyId = 1,
-                    CompanyName = "Tech Solutions Inc.",
-                    CompanyEmail = "info@techsolutions.com",
+                    CompanyName = "FBG SJUKVÅRD",
+                    CompanyEmail = "fbg@sjukvård.se",
                     UserId = 1
                 },
                 new Company
                 {
                     CompanyId = 2,
-                    CompanyName = "Innovative Designs LLC",
-                    CompanyEmail = "contact@innovativedesigns.com",
+                    CompanyName = "Friskis & Svettis",
+                    CompanyEmail = "contact@friskissvettis.se",
                     UserId = 1
                 }
             );
@@ -78,8 +78,8 @@ namespace Avancerad.NET_SlutProjekt.Data
                     AppointmentDurationMinutes = 60,
                     CreationDate = DateTime.UtcNow.AddDays(-1),
                     UpdateDate = DateTime.UtcNow,
-                    Title = "Consultation Meeting",
-                    Description = "Meeting to discuss project requirements.",
+                    Title = "Undersökning",
+                    Description = "Undersökning för att hitta eventuella skador/sjukdomar",
                     CompanyId = 1,
                     CustomerId = 1
                 },
@@ -90,8 +90,8 @@ namespace Avancerad.NET_SlutProjekt.Data
                     AppointmentDurationMinutes = 30,
                     CreationDate = DateTime.UtcNow.AddDays(-2),
                     UpdateDate = DateTime.UtcNow,
-                    Title = "Design Review",
-                    Description = "Review of the initial design drafts.",
+                    Title = "PT-Pass",
+                    Description = "Träningspass med våran PT",
                     CompanyId = 2,
                     CustomerId = 2
                 }
@@ -103,8 +103,8 @@ namespace Avancerad.NET_SlutProjekt.Data
                     Id = 1,
                     AppointId = 1,
                     ChangedAtDate = DateTime.UtcNow,
-                    Action = "Created",
-                    Details = "Appointment created for John Wall",
+                    Action = "Skapad",
+                    Details = "Möte skapad för Anna Andersson",
                     CustomerId = 1,
                     CompanyId = 1
                 },
@@ -113,8 +113,8 @@ namespace Avancerad.NET_SlutProjekt.Data
                     Id = 2,
                     AppointId = 2,
                     ChangedAtDate = DateTime.UtcNow,
-                    Action = "Created",
-                    Details = "Appointment created for Mary Jane",
+                    Action = "Skapad",
+                    Details = "Möte skapad för Karl Karlsson",
                     CustomerId = 2,
                     CompanyId = 2
                 }

@@ -16,7 +16,6 @@ namespace ClassLibrary
         public string Email { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^+?[1-9][0-9]{7,14}$", ErrorMessage = "This is not a valid phone number")]
         public string Phone { get; set; }
         [Required]
         [StringLength(20)]

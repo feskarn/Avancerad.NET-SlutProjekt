@@ -9,6 +9,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
 {
     public class AuthenticationRepository : IAuthenticationRepository
     {
+
         private readonly IConfiguration _configuration;
         private readonly IUserRepository _userRepository;
 
@@ -17,11 +18,11 @@ namespace Avancerad.NET_SlutProjekt.Repositories
             _configuration = configuration;
             _userRepository = userRepository;
         }
-
         public string GenerateJwtToken(User user)
         {
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:NewSigningKey"]);
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
             var securityKey = new SymmetricSecurityKey(key);
+
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new List<Claim>
@@ -30,6 +31,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
             new Claim(ClaimTypes.Name, user.Username),
             new Claim(ClaimTypes.Role, user.Role)
         };
+
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
@@ -41,11 +43,8 @@ namespace Avancerad.NET_SlutProjekt.Repositories
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-    
 
-
-
-    public bool ValidateLogin(string username, string password)
+        public bool ValidateLogin(string username, string password)
         {
             var user = _userRepository.FindByUsername(username);
             if (user != null && _userRepository.CheckPassword(user, password))
@@ -54,6 +53,5 @@ namespace Avancerad.NET_SlutProjekt.Repositories
             }
             return false;
         }
-
     }
 }

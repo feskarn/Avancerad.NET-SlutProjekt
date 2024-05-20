@@ -85,9 +85,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
 
 
 
-        /// <summary>
-        /// THE METHODS BELOW IS FOR WHEN THE COMPANY WANTS TO HANDLE BOOKINGS AND APPOINTMENTS
-        /// </summary>
+      
 
 
 
@@ -114,7 +112,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
                 return null;
             }
             var appointment = _mapper.Map<Appointment>(appointmentDto);
-            appointment.CreationDate = DateTime.UtcNow;  // Set creation and update date explicitly
+            appointment.CreationDate = DateTime.UtcNow;  
             appointment.UpdateDate = DateTime.UtcNow;
             appointment.Company = company;
             appointment.Customer = customer;
@@ -126,7 +124,7 @@ namespace Avancerad.NET_SlutProjekt.Repositories
                             appointmentDto.CustomerId,
                             appointmentDto.CompanyId,
                             "Appointment Created");
-            //var appointmentDtoResult = _mapper.Map<AppointmentDto>(result.Entity);
+            
             var appointmentDtoResult = _mapper.Map<AppointmentDto>(result.Entity);
             appointmentDtoResult.CustomerId = appointmentDto.CustomerId;
             appointmentDtoResult.CompanyId = appointmentDto.CompanyId;
